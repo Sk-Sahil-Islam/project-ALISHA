@@ -7,7 +7,6 @@ import SharedPlaylist from './SharedPlaylist';
 import BucketList from './BucketList';
 import MemoryTimeline from './MemoryTimeline';
 import Particles from './Particles';
-import CanvasCursor from './CanvasCursor';
 import './Dashboard.css';
 
 const Dashboard = ({ user, room, roomData, onLogout }) => {
@@ -74,7 +73,6 @@ const Dashboard = ({ user, room, roomData, onLogout }) => {
                     </div>
                 </div>
             </div>
-            <CanvasCursor />
         </>
     );
 };

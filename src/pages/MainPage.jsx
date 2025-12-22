@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Dashboard from '../components/Dashboard';
 import { useRoomData } from '../hooks/useRoomData';
+import CanvasCursor from '../components/CanvasCursor';
 
 const MainPage = () => {
     const navigate = useNavigate();
