@@ -1195,3 +1195,15 @@ button.small-btn.tiny {
     background: rgba(255, 0, 85, 0.4);
     transform: scale(1.1) rotate(90deg);
 }
+
+/* Disable heavy effects on mobile */
+@media (max-width: 700px) {
+  /* Disable backdrop blur on mobile - very expensive */
+  
+  /* Disable particle animations */
+  .aurora-effect,
+  .floating-particle,
+  .glowing-orb {
+    display: none !important;
+  }
+}

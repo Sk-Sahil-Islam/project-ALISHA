@@ -151,9 +151,9 @@ const LoginPage = () => {
                     </div>
 
                     <div className="waiting-instructions">
-                        <p>📱 Share this room code with your partner</p>
-                        <p>🔗 They need to use the same room code to join</p>
-                        <p>⏳ You'll be connected automatically once they join</p>
+                        <p>* Share this room code with your partner</p>
+                        <p>* They need to use the same room code to join</p>
+                        <p>* You'll be connected automatically once they join</p>
                     </div>
 
                     <button className="small-btn alt" onClick={handleBackToLogin}>
@@ -209,8 +209,8 @@ const LoginPage = () => {
                             </button>
 
                             <div className="login-info">
-                                <p>⚠️ Room capacity: 2 users maximum</p>
-                                <p>🔒 Both users must use the same room code</p>
+                                <p>Room capacity: 2 users maximum</p>
+                                <p>Both users must use the same room code</p>
                             </div>
                         </form>
                     </>
