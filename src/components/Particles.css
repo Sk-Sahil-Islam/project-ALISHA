@@ -1,0 +1,170 @@
+.particle-container {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.floating-particle {
+    position: absolute;
+    bottom: -20px;
+    pointer-events: none;
+    animation: floatUpParticle linear infinite;
+    will-change: transform;
+}
+
+@keyframes floatUpParticle {
+    0% {
+        transform: translateY(0) translateX(0) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh) translateX(var(--drift, 50px)) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.floating-particle[data-type="heart"] {
+    --drift: 30px;
+    filter: drop-shadow(0 0 3px rgba(255, 0, 85, 0.5));
+}
+
+.floating-particle[data-type="star"] {
+    --drift: -40px;
+    filter: drop-shadow(0 0 3px rgba(0, 243, 255, 0.5));
+}
+
+.floating-particle[data-type="sparkle"] {
+    --drift: 20px;
+    filter: drop-shadow(0 0 3px rgba(184, 32, 255, 0.5));
+}
+
+.floating-particle[data-type="circle"] {
+    --drift: -30px;
+    box-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
+}
+
+/* AURORA EFFECT */
+.aurora-effect {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+    opacity: 0.15;
+}
+
+.aurora-effect::before,
+.aurora-effect::after {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(
+        ellipse at center,
+        rgba(0, 243, 255, 0.3) 0%,
+        rgba(184, 32, 255, 0.2) 25%,
+        rgba(255, 0, 85, 0.2) 50%,
+        transparent 70%
+    );
+    animation: aurora 30s ease-in-out infinite;
+}
+
+.aurora-effect::before {
+    top: -50%;
+    left: -50%;
+}
+
+.aurora-effect::after {
+    bottom: -50%;
+    right: -50%;
+    animation-delay: 15s;
+    animation-direction: reverse;
+}
+
+@keyframes aurora {
+    0%, 100% {
+        transform: translate(0, 0) rotate(0deg) scale(1);
+        opacity: 0.15;
+    }
+    33% {
+        transform: translate(10%, 10%) rotate(120deg) scale(1.1);
+        opacity: 0.25;
+    }
+    66% {
+        transform: translate(-10%, -10%) rotate(240deg) scale(0.9);
+        opacity: 0.2;
+    }
+}
+
+/* SHOOTING STARS */
+.shooting-star {
+    position: fixed;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 0 10px 2px rgba(0, 243, 255, 0.8);
+    animation: shootingStar 3s ease-out forwards;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes shootingStar {
+    0% {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(300px, 300px);
+        opacity: 0;
+    }
+}
+
+.shooting-star::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100px;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        rgba(0, 243, 255, 0) 0%,
+        rgba(0, 243, 255, 0.8) 50%,
+        rgba(0, 243, 255, 0) 100%
+    );
+    transform: translateX(-100px);
+}
+
+/* GLOWING ORBS */
+.glowing-orb {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(40px);
+    pointer-events: none;
+    z-index: 0;
+    animation: floatOrb 20s ease-in-out infinite;
+}
+
+@keyframes floatOrb {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+    }
+    25% {
+        transform: translate(100px, -100px) scale(1.2);
+    }
+    50% {
+        transform: translate(-50px, 50px) scale(0.8);
+    }
+    75% {
+        transform: translate(80px, 80px) scale(1.1);
+    }
+}

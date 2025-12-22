@@ -1,0 +1,122 @@
+.dashboard {
+    width: 100%;
+    min-height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    position: relative;
+    z-index: 2;
+    padding-bottom: 40px;
+}
+
+.dashboard::-webkit-scrollbar {
+    display: none;
+}
+
+/* TOP GRID SECTION - Fixed 2 column grid */
+.top-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    padding: 20px 20px 0 20px;
+    box-sizing: border-box;
+    max-width: 1400px;
+    margin: 0 auto;
+    animation: fadeInGrid 0.8s ease-out;
+}
+
+/* CENTERED REACTOR SECTION */
+.reactor-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+    animation: fadeInGrid 0.9s ease-out;
+}
+
+/* BOTTOM MASONRY SECTION - Column layout for masonry effect */
+.bottom-masonry {
+    column-count: 2;
+    column-gap: 18px;
+    padding: 0 20px 20px 20px;
+    box-sizing: border-box;
+    max-width: 1400px;
+    margin: 0 auto;
+    animation: fadeInGrid 1s ease-out;
+}
+
+@keyframes fadeInGrid {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Grid items */
+.grid-item {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    margin-bottom: 18px;
+    animation: fadeInItem 0.6s ease-out backwards;
+    display: inline-block;
+    width: 100%;
+}
+
+.top-grid .grid-item:nth-child(1) { animation-delay: 0.1s; }
+.top-grid .grid-item:nth-child(2) { animation-delay: 0.15s; }
+
+.bottom-masonry .grid-item:nth-child(1) { animation-delay: 0.3s; }
+.bottom-masonry .grid-item:nth-child(2) { animation-delay: 0.35s; }
+.bottom-masonry .grid-item:nth-child(3) { animation-delay: 0.4s; }
+.bottom-masonry .grid-item:nth-child(4) { animation-delay: 0.45s; }
+
+@keyframes fadeInItem {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 700px) {
+    .top-grid {
+        grid-template-columns: 1fr;
+        padding: 12px 12px 0 12px;
+    }
+    
+    .reactor-section {
+        padding: 12px;
+    }
+    
+    .bottom-masonry {
+        column-count: 1;
+        padding: 0 12px 12px 12px;
+    }
+    
+    .grid-item {
+        margin-bottom: 14px;
+    }
+}
+
+
+.canvas-cursor {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  display: block;        /* avoids inline-canvas baseline gaps */
+  pointer-events: none;
+  z-index: 4;            /* keep it behind your UI */
+}
+
