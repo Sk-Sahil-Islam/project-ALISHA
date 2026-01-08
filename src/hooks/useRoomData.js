@@ -1,54 +1,63 @@
-import { useState, useEffect } from 'react';
-import { database, ref, set, onValue, off } from '../services/firebase';
+import { useState, useEffect } from "react";
+import { database, ref, set, onValue, off } from "../services/firebase";
 
 export const useRoomData = (room, user) => {
-    const [meetingDate, setMeetingDate] = useState(new Date('2026-03-10'));
-    const [partnerData, setPartnerData] = useState(null);
-    const [roomUsers, setRoomUsers] = useState([]);
+  const [meetingDate, setMeetingDate] = useState(new Date("2026-03-10"));
+  const [lastMetDate, setLastMetDate] = useState(new Date("2025-11-30")); // default
+  const [partnerData, setPartnerData] = useState(null);
+  const [roomUsers, setRoomUsers] = useState([]);
 
-    useEffect(() => {
-        if (!room) return;
+  useEffect(() => {
+    if (!room) return;
 
-        // Listen to meeting date (synced across users)
-        const meetingRef = ref(database, `/rooms/${room}/meetingDate`);
-        const unsubMeeting = onValue(meetingRef, (snapshot) => {
-            const date = snapshot.val();
-            if (date) {
-                setMeetingDate(new Date(date));
-            }
-        });
+    // meeting date
+    const meetingRef = ref(database, `/rooms/${room}/meetingDate`);
+    const unsubMeeting = onValue(meetingRef, (snapshot) => {
+      const date = snapshot.val();
+      if (date) setMeetingDate(new Date(date));
+    });
 
-        // Listen to users in room
-        const usersRef = ref(database, `/rooms/${room}/users`);
-        const unsubUsers = onValue(usersRef, (snapshot) => {
-            const users = snapshot.val() || {};
-            const userList = Object.keys(users).filter(u => users[u].active);
-            setRoomUsers(userList);
-            
-            // Find partner
-            const partner = userList.find(u => u !== user);
-            if (partner) {
-                setPartnerData({ name: partner });
-            } else {
-                setPartnerData(null);
-            }
-        });
+    // last met date (NEW)
+    const lastMetRef = ref(database, `/rooms/${room}/lastMetDate`);
+    const unsubLastMet = onValue(lastMetRef, (snapshot) => {
+      const date = snapshot.val();
+      if (date) setLastMetDate(new Date(date));
+    });
 
-        return () => {
-            off(meetingRef);
-            off(usersRef);
-        };
-    }, [room, user]);
+    // users
+    const usersRef = ref(database, `/rooms/${room}/users`);
+    const unsubUsers = onValue(usersRef, (snapshot) => {
+      const users = snapshot.val() || {};
+      const userList = Object.keys(users).filter((u) => users[u].active);
+      setRoomUsers(userList);
 
-    const updateMeetingDate = (newDate) => {
-        if (!room) return;
-        set(ref(database, `/rooms/${room}/meetingDate`), newDate.toISOString());
+      const partner = userList.find((u) => u !== user);
+      setPartnerData(partner ? { name: partner } : null);
+    });
+
+    return () => {
+      off(meetingRef);
+      off(lastMetRef);
+      off(usersRef);
     };
+  }, [room, user]);
 
-    return {
-        meetingDate,
-        updateMeetingDate,
-        partnerData,
-        roomUsers
-    };
+  const updateMeetingDate = (newDate) => {
+    if (!room) return;
+    set(ref(database, `/rooms/${room}/meetingDate`), newDate.toISOString());
+  };
+
+  const updateLastMetDate = (newDate) => {
+    if (!room) return;
+    set(ref(database, `/rooms/${room}/lastMetDate`), newDate.toISOString());
+  };
+
+  return {
+    meetingDate,
+    updateMeetingDate,
+    lastMetDate,
+    updateLastMetDate,
+    partnerData,
+    roomUsers,
+  };
 };

@@ -97,7 +97,7 @@ const MemoryTimeline = ({ user, room }) => {
                 )}
             </div>
 
-            <div className="subtext">Shared memories, forever saved</div>
+            {/* <div className="subtext">Shared memories, forever saved</div> */}
         </div>
     );
 };

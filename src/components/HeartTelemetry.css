@@ -1,0 +1,13 @@
+/* force the special button to be compact */
+.special-inline-btn {
+  width: auto !important;
+  max-width: max-content !important;
+  display: inline-flex !important;
+  align-self: flex-start;       /* since .box is flex-column */
+  flex: 0 0 auto !important;    /* do NOT grow */
+  padding: 6px 10px !important;
+  margin-left: 10px;
+  margin-top: 0;
+  height: 26px;
+  white-space: nowrap;
+}

@@ -112,7 +112,7 @@ const SharedPlaylist = ({ user, room }) => {
                 )}
             </div>
 
-            <div className="subtext">Songs that tell our story</div>
+            {/* <div className="subtext">Songs that tell our story</div> */}
         </div>
     );
 };

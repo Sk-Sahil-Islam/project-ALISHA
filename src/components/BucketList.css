@@ -1,0 +1,74 @@
+.todo-list{
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.todo-item{
+  display: flex;
+  align-items: center;      /* vertical alignment */ /* [web:230] */
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 12px;
+
+  background: rgba(0, 243, 255, 0.05);
+  border: 1px solid rgba(0, 243, 255, 0.14);
+
+  min-width: 0; /* important for text sizing inside flex */
+}
+
+.todo-check{
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+  cursor: pointer;
+  accent-color: #00f3ff;
+}
+
+.todo-text{
+  flex: 1 1 auto;      /* this is the part that expands */
+  min-width: 0;        /* allows shrink instead of pushing layout */ /* [web:239] */
+  color: #aefcff;
+  /* font-size: 14px; */
+  line-height: 1.2;
+
+  /* choose one: wrap OR ellipsis */
+
+  /* Wrap (recommended for long bucket items) */
+  white-space: normal;
+  word-break: break-word;
+
+  /* If you prefer single-line with ellipsis, use these instead:
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  */
+}
+
+.todo-text.done{
+  text-decoration: line-through;
+  opacity: 0.55;
+}
+
+.delete-todo-btn{
+  flex: 0 0 auto;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 0, 85, 0.35);
+  background: rgba(255, 0, 85, 0.12);
+  color: #fff;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.delete-todo-btn:hover{
+  background: rgba(255, 0, 85, 0.18);
+  border-color: rgba(255, 0, 85, 0.55);
+}

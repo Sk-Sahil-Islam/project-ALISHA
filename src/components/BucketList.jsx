@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { database, ref, set, onValue, remove, off } from '../services/firebase';
+import "./BucketList.css";
 
 const BucketList = ({ room }) => {
     const [todoInput, setTodoInput] = useState('');
@@ -53,20 +54,27 @@ const BucketList = ({ room }) => {
                         const item = todos[id];
                         return (
                             <div key={id} className="todo-item">
-                                <input
-                                    type="checkbox"
-                                    checked={!!item.done}
-                                    onChange={() => handleToggle(id, item.done)}
-                                />
-                                <span className={item.done ? 'done' : ''}>{item.text}</span>
-                                <button
-                                    className="delete-todo-btn"
-                                    onClick={() => handleDelete(id)}
-                                    title="Delete"
-                                >
-                                    ×
-                                </button>
+                            <input
+                                className="todo-check"
+                                type="checkbox"
+                                checked={!!item.done}
+                                onChange={() => handleToggle(id, item.done)}
+                            />
+
+                            <span className={`todo-text ${item.done ? "done" : ""}`}>
+                                {item.text}
+                            </span>
+
+                            <button
+                                className="delete-todo-btn"
+                                onClick={() => handleDelete(id)}
+                                title="Delete"
+                                type="button"
+                            >
+                                ×
+                            </button>
                             </div>
+
                         );
                     })}
             </div>

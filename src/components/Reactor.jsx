@@ -235,7 +235,7 @@ const Reactor = ({ user, room }) => {
                     {formatCoreText(coreText)}
                 </div>
             </div>
-            <div className="reactor-footer">QUANTUM UPLINK ACTIVE</div>
+            {/* <div className="reactor-footer">QUANTUM UPLINK ACTIVE</div> */}
             <div style={{ fontSize: '10px', marginTop: '4px' }}>
                 Today's taps: <span>{myTapCount}</span> | Partner: <span>{partnerTapCount}</span>
                 <br />

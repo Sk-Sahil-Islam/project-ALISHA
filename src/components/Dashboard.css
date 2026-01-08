@@ -120,3 +120,66 @@
   z-index: 4;            /* keep it behind your UI */
 }
 
+.special-btn {
+  margin: 0 auto 14px auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  letter-spacing: 2px;
+}
+
+
+.dates-row{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.date-block{
+  min-width: 0;
+}
+
+.date-change-row.compact{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.date-change-row.compact .date-input{
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+@media (max-width: 700px){
+  .dates-row{
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Make sure input stays visible and button doesn't expand */
+.date-change-row.compact{
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+  min-width: 0;
+}
+
+.date-change-row.compact .date-input{
+  flex: 1 1 0;     /* input takes remaining space */
+  min-width: 0;    /* allow it to shrink instead of being pushed out */ /* [web:202] */
+  height: 42px;
+}
+
+.date-change-row.compact .small-btn.tiny{
+  flex: 0 0 auto;  /* button must NOT grow */
+  width: auto;     /* prevent full-width button */
+  min-width: 64px; /* optional */
+  height: 42px;
+  padding: 0 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+

@@ -1,0 +1,57 @@
+.special-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+}
+
+.special-card {
+  width: min(720px, 94vw);
+  background: rgba(10, 10, 15, 0.88);
+  border: 1px solid rgba(0, 243, 255, 0.25);
+  border-radius: 16px;
+  padding: 16px;
+  position: relative;
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.55);
+}
+
+.special-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 0, 85, 0.35);
+  background: rgba(255, 0, 85, 0.12);
+  color: white;
+  cursor: pointer;
+}
+
+.special-title {
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 2px;
+}
+
+.special-subtitle {
+  font-size: 11px;
+  opacity: 0.75;
+  margin-bottom: 12px;
+}
+
+.special-video {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid rgba(184, 32, 255, 0.25);
+  background: black;
+  margin-bottom: 12px;
+}
