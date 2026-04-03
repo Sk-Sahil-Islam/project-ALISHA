@@ -1,6 +1,4 @@
-# 💕 Project ALISHA 💕
-
-> *When I'm with you i hope time goes slower, when I am without you i hope time goes faster. Time is relative right? ilysm that i want to talk after talking, see you after seeing you, and hug you after hugging you ~few words for my alisha*
+# Project ALISHA 
 
 **Project ALISHA** is a real-time browser dashboard built for long-distance couples. Share your world, sync your hearts, and build memories together—no matter how many miles apart.
 
